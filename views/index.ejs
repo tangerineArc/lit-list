@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/index.css">
+
+  <title>
+    <%= locals.title %>
+  </title>
+</head>
+
+<body>
+  <h1>
+    <%= locals.title %>
+  </h1>
+
+  <ul>
+    <% locals.examples.forEach(example => { %>
+      <li>
+        <%= example.example_text %>
+      </li>
+    <% }); %>
+  </ul>
+
+  <a href="/new">Create Example</a>
+</body>
+
+</html>
