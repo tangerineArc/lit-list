@@ -6,9 +6,37 @@ import "dotenv/config";
 import pg from "pg";
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS examples (
+CREATE TABLE IF NOT EXISTS book (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  example_text VARCHAR ( 255 )
+  name VARCHAR ( 255 ),
+  stock INTEGER,
+  price MONEY,
+  publicationDate DATE
+);
+
+CREATE TABLE IF NOT EXISTS author (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR ( 255 ),
+  birthDate DATE
+);
+
+CREATE TABLE IF NOT EXISTS genre (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  type VARCHAR ( 255 )
+);
+
+CREATE TABLE IF NOT EXISTS book_author_relation (
+  bookId INTEGER,
+  authorId INTEGER,
+  FOREIGN KEY ( bookId ) REFERENCES book ( id ),
+  FOREIGN kEY ( authorId ) REFERENCES author ( id )
+);
+
+CREATE TABLE IF NOT EXISTS book_genre_relation (
+  bookId INTEGER,
+  genreId INTEGER,
+  FOREIGN KEY ( bookId ) REFERENCES book ( id ),
+  FOREIGN kEY ( genreId ) REFERENCES genre ( id )
 );
 `;
 
