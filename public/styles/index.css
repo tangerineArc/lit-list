@@ -173,6 +173,111 @@ aside {
 main {
   background-color: #e9ecef;
   flex-grow: 1;
+
+  color: #343a40;
+
+  & > header {
+    padding: 1.5rem 2rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: #f8f9fa;
+
+    & > svg {
+      stroke: #6c757d;
+
+      cursor: pointer;
+    }
+
+    & > form {
+      width: 100%;
+      text-align: center;
+
+      & > label {
+        position: relative;
+
+        margin: 0 auto;
+
+        & > input {
+          appearance: none;
+          border: none;
+          outline: none;
+
+          background-color: #e9ecef;
+          padding: 0.7rem 0.9rem;
+          padding-left: 2.5rem;
+          padding-right: 3rem;
+          border-radius: 5px;
+          border-bottom: 2px solid #adb5bd;
+          width: clamp(300px, 30%, 800px);
+
+          font-size: 1rem;
+          font-family: inherit;
+          color: inherit;
+          font-weight: inherit;
+        }
+
+        & > input:focus {
+          border-color: #343a40;
+
+          & + svg {
+            stroke: #343a40;
+          }
+        }
+
+        & > svg {
+          position: absolute;
+          left: 0.6rem;
+          top: 0;
+
+          stroke: #adb5bd;
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+
+        & > button {
+          position: absolute;
+          right: 0.5rem;
+          top: 50%;
+          transform: translateY(-50%);
+
+          appearance: none;
+          border: none;
+          outline: none;
+
+          background-color: #ced4da;
+          padding: 0.3rem 0.4rem;
+          border-radius: 5px;
+
+          display: flex;
+          align-items: center;
+
+          cursor: pointer;
+
+          & > svg {
+            width: 1rem;
+            height: 1rem;
+
+            stroke:#6c757d;
+          }
+        }
+      }
+
+      & > label:hover {
+        & > svg {
+          stroke: #343a40;
+        }
+      }
+    }
+  }
+
+  & > h2 {
+    font-weight: 600;
+    color: #495057;
+    /* font-size: 2rem; */
+  }
 }
 
 @keyframes opening {
@@ -209,4 +314,14 @@ main {
 
 .closing-box {
   display: none;
+}
+
+.selected-tab {
+  background-color: #e9ecef;
+}
+
+.selected {
+  & > svg {
+    stroke: #000;
+  }
 }
