@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/styles/index.css">
+  <link rel="stylesheet" href="/styles/sidebar.css">
+  <link rel="stylesheet" href="/styles/header.css">
   <script defer src="/scripts/sidebar.js"></script>
 
   <title>
@@ -19,7 +21,9 @@
   <main>
     <%- include("partials/header.ejs") %>
 
-    <p><%= locals.heading %></p>
+    <section>
+      <p><%= locals.heading %></p>
+    </section>
   </main>
 </body>
 
