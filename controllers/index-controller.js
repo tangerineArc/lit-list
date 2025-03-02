@@ -1,41 +1,30 @@
 "use strict";
 
 import asyncHandler from "express-async-handler";
-import { body, validationResult } from "express-validator";
 
 import * as db from "../db/queries.js";
 
-const validateExample = [
-  body("example_text")
-    .trim()
-    .isAlpha()
-    .withMessage("Example must only contain letters")
-    .isLength({ min: 1, max: 10 })
-    .withMessage("Example must be between 1 and 10 characters"),
-];
+const renderDashboardPage = asyncHandler(async (req, res) => {
+  const stockSum = await db.selectStockSum();
+  const bookCount = await db.selectBookCount();
+  const authorCount = await db.selectAuthorCount();
+  const genreCount = await db.selectGenreCount();
+  const totalCost = await db.selectPriceSum();
+  const lowStockCount = await db.selectCountLowStock();
+  const outOfStockCount = await db.selectOutOfStockCount();
 
-const getExamples = asyncHandler(async (req, res) => {
-  const examples = await db.getALlExamples();
-  res.render("index.ejs", { examples });
+  res.render("index.ejs", {
+    title: "Stampede | Dashboard",
+    selection: "dashboard",
+    path: ["Dashboard"],
+    stockSum,
+    bookCount,
+    authorCount,
+    genreCount,
+    totalCost: totalCost.slice(1).split("."),
+    lowStockCount,
+    outOfStockCount,
+  });
 });
 
-function createExampleGet(req, res) {
-  res.render("create-example.ejs", { title: "Create Example" });
-}
-
-const createExamplePost = [
-  validateExample,
-  asyncHandler(async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      throw new Error(errors.array().map(error => error.msg).join(", "));
-    }
-
-    console.log("h2");
-    const { example_text } = req.body;
-    await db.insertExample(example_text);
-    res.redirect("/");
-  }),
-];
-
-export { createExampleGet, createExamplePost, getExamples };
+export { renderDashboardPage };
