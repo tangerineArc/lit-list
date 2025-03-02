@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="/styles/books-overview.css">
   <% } %>
 
+  <% if (locals.selection === "authors") { %>
+    <link rel="stylesheet" href="/styles/authors-overview.css">
+  <% } %>
+
+  <% if (locals.selection === "genres") { %>
+    <link rel="stylesheet" href="/styles/genres-overview.css">
+  <% } %>
+
   <script defer src="/scripts/sidebar.js"></script>
 
   <title>
@@ -49,6 +57,14 @@
 
     <% if (locals.selection === "books") { %>
       <%- include("partials/books-overview.ejs", { books: locals.books, formatDate: locals.formatDate }) %>
+    <% } %>
+
+    <% if (locals.selection === "authors") { %>
+      <%- include("partials/authors-overview.ejs", { authors: locals.authors, formatDate: locals.formatDate }) %>
+    <% } %>
+
+    <% if (locals.selection === "genres") { %>
+      <%- include("partials/genres-overview.ejs", { genres: locals.genres }) %>
     <% } %>
   </main>
 </body>
