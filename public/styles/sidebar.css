@@ -8,6 +8,10 @@ aside {
   flex-direction: column;
   gap: 0.5rem;
 
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #adb5bd #fff;
+
   & > h1 {
     display: flex;
     align-items: center;
