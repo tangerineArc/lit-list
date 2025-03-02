@@ -32,6 +32,10 @@ main {
 
   color: #343a40;
 
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #adb5bd #fff;
+
   & > .path {
     margin: 1.5rem;
 

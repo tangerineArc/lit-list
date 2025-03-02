@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="/styles/dashboard-overview.css">
   <% } %>
 
+  <% if (locals.selection === "books") { %>
+    <link rel="stylesheet" href="/styles/books-overview.css">
+  <% } %>
+
   <script defer src="/scripts/sidebar.js"></script>
 
   <title>
@@ -41,6 +45,10 @@
 
     <% if (locals.selection === "dashboard") { %>
       <%- include("partials/dashboard-overview.ejs", { stockSum: locals.stockSum, bookCount: locals.bookCount, authorCount: locals.authorCount, genreCount: locals.genreCount, totalCost: locals.totalCost, lowStockCount: locals.lowStockCount, outOfStockCount: locals.outOfStockCount }) %>
+    <% } %>
+
+    <% if (locals.selection === "books") { %>
+      <%- include("partials/books-overview.ejs", { books: locals.books, formatDate: locals.formatDate }) %>
     <% } %>
   </main>
 </body>
