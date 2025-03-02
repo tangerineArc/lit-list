@@ -31,4 +31,23 @@ main {
   flex-grow: 1;
 
   color: #343a40;
+
+  & > .path {
+    margin: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    & > svg {
+      width: 1.2rem;
+      height: 1.2rem;
+
+      stroke: #6c757d;
+    }
+
+    & > p {
+      color: #6c757d;
+    }
+  }
 }

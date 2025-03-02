@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="/styles/index.css">
   <link rel="stylesheet" href="/styles/sidebar.css">
   <link rel="stylesheet" href="/styles/header.css">
+
+  <% if (locals.selection === "dashboard") { %>
+    <link rel="stylesheet" href="/styles/dashboard-overview.css">
+  <% } %>
+
   <script defer src="/scripts/sidebar.js"></script>
 
   <title>
@@ -21,9 +26,22 @@
   <main>
     <%- include("partials/header.ejs") %>
 
-    <section>
-      <p><%= locals.heading %></p>
-    </section>
+    <div class="path">
+      <% locals.path.forEach(item => { %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 17 5-5-5-5" />
+          <path d="m13 17 5-5-5-5" />
+        </svg>
+        <p>
+          <%= item %>
+        </p>
+      <% }); %>
+    </div>
+
+    <% if (locals.selection === "dashboard") { %>
+      <%- include("partials/dashboard-overview.ejs", { stockSum: locals.stockSum, bookCount: locals.bookCount, authorCount: locals.authorCount, genreCount: locals.genreCount, totalCost: locals.totalCost, lowStockCount: locals.lowStockCount, outOfStockCount: locals.outOfStockCount }) %>
+    <% } %>
   </main>
 </body>
 
