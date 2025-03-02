@@ -46,7 +46,21 @@
     sidebarOpenButton.style.display = "inline";
   });
 
+  sidebarCloseButton.addEventListener("keyup", (event) => {
+    if (event.key !== "Enter") return;
+
+    sidebar.style.display = "none";
+    sidebarOpenButton.style.display = "inline";
+  });
+
   sidebarOpenButton.addEventListener("click", () => {
+    sidebar.style.display = "flex";
+    sidebarOpenButton.style.display = "none";
+  });
+
+  sidebarOpenButton.addEventListener("keyup", (event) => {
+    if (event.key !== "Enter") return;
+
     sidebar.style.display = "flex";
     sidebarOpenButton.style.display = "none";
   });
