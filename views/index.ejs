@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="/styles/book-description.css">
   <% } %>
 
+  <% if (locals.selection === "author-details" ) { %>
+    <link rel="stylesheet" href="/styles/author-description.css">
+  <% } %>
+
   <script defer src="/scripts/sidebar.js"></script>
 
   <title>
@@ -73,6 +77,10 @@
 
     <% if (locals.selection === "book-details") { %>
       <%- include("partials/book-description.ejs", { details: locals.details, formatDate: locals.formatDate, authors: locals.authors, genres: locals.genres }) %>
+    <% } %>
+
+    <% if (locals.selection === "author-details" ) { %>
+      <%- include("partials/author-description.ejs", { details: locals.details, formatDate: locals.formatDate, books: locals.books }) %>
     <% } %>
   </main>
 </body>

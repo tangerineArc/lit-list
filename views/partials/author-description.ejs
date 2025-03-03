@@ -1,0 +1,37 @@
+<section>
+  <div>
+    <p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17.28 9.05a5.5 5.5 0 1 0-10.56 0A5.5 5.5 0 1 0 12 17.66a5.5 5.5 0 1 0 5.28-8.6Z" />
+        <path d="M12 17.66L12 22" />
+      </svg>
+      <%= locals.details.name %>
+    </p>
+    <p>
+      Born on
+      <%= locals.formatDate(new Date(locals.details.birthdate).toString()) %>
+    </p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="connector">
+      <path d="M12 3v6" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 15v6" />
+    </svg>
+  </div>
+
+  <div>
+    <% locals.books.forEach((book)=> { %>
+      <a href="/books/<%= book.id %>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 7v14" />
+          <path
+            d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+        </svg>
+        <%= book.name %>
+      </a>
+      <% }); %>
+  </div>
+</section>
