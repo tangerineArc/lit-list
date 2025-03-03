@@ -1,0 +1,62 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+
+  padding: 1rem 2rem;
+  padding-bottom: 2rem;
+
+  color: #6c757d;
+
+  & > div {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    width: 240px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    position: relative;
+
+    & > .connector {
+      position: absolute;
+      top: 100%;
+      right: 1rem;
+
+      stroke: #adb5bd;
+      stroke-width: 1;
+      height: 2rem;
+      width: 2rem;
+    }
+
+    & > p:first-of-type,
+    & > a {
+      max-width: 100%;
+      background-color: #dee2e6;
+      padding: 0.5rem;
+      border-radius: 5px;
+
+      position: relative;
+
+      line-height: 1.5;
+      font-size: 0.95rem;
+      text-align: center;
+
+      & > svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        stroke: #adb5bd;
+
+        flex-shrink: 0;
+
+        position: absolute;
+        top: -0.5rem;
+        left: -0.5rem;
+      }
+    }
+  }
+}
