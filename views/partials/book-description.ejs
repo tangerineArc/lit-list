@@ -1,0 +1,63 @@
+<section>
+  <div>
+    <p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 7v14" />
+        <path
+          d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+      </svg>
+      <%= details.name %>
+    </p>
+    <div>
+      <p>
+        <%= details.stock %> in stock
+      </p>
+      <p>₹<%= details.price.slice(1,) %>
+      </p>
+    </div>
+    <p>
+      Published on
+      <%= locals.formatDate(new Date(details.publicationdate).toString()) %>
+    </p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="connector">
+      <path d="M12 3v6" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 15v6" />
+    </svg>
+  </div>
+
+  <div>
+    <% locals.authors.forEach((author)=> { %>
+      <a href="/authors/<%= author.id %>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17.28 9.05a5.5 5.5 0 1 0-10.56 0A5.5 5.5 0 1 0 12 17.66a5.5 5.5 0 1 0 5.28-8.6Z" />
+          <path d="M12 17.66L12 22" />
+        </svg>
+        <%= author.name %>
+      </a>
+      <% }); %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="connector">
+          <path d="M12 3v6" />
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 15v6" />
+        </svg>
+  </div>
+
+  <div>
+    <% locals.genres.forEach((genre)=> { %>
+      <a href="/genres/<%= genre.id %>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+        </svg>
+        <%= genre.type %>
+      </a>
+      <% }); %>
+  </div>
+</section>

@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="/styles/genres-overview.css">
   <% } %>
 
+  <% if (locals.selection === "book-details") { %>
+    <link rel="stylesheet" href="/styles/book-description.css">
+  <% } %>
+
   <script defer src="/scripts/sidebar.js"></script>
 
   <title>
@@ -65,6 +69,10 @@
 
     <% if (locals.selection === "genres") { %>
       <%- include("partials/genres-overview.ejs", { genres: locals.genres }) %>
+    <% } %>
+
+    <% if (locals.selection === "book-details") { %>
+      <%- include("partials/book-description.ejs", { details: locals.details, formatDate: locals.formatDate, authors: locals.authors, genres: locals.genres }) %>
     <% } %>
   </main>
 </body>
