@@ -621,6 +621,12 @@ VALUES
   ( 47, 1 ),
   ( 47, 35 ),
   ( 47, 36 );
+
+ALTER SEQUENCE book_id_seq RESTART WITH 48;
+
+ALTER SEQUENCE author_id_seq RESTART WITH 14;
+
+ALTER SEQUENCE genre_id_seq RESTART WITH 37;
 `;
 
 async function main() {
