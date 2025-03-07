@@ -4,6 +4,8 @@ import asyncHandler from "express-async-handler";
 
 import * as db from "../db/queries.js";
 
+import formatDate from "../utils/format-date.js";
+
 const renderDashboardPage = asyncHandler(async (req, res) => {
   const stockSum = await db.selectStockSum();
   const bookCount = await db.selectBookCount();
@@ -27,4 +29,23 @@ const renderDashboardPage = asyncHandler(async (req, res) => {
   });
 });
 
-export { renderDashboardPage };
+const renderSearchPage = async (req, res) => {
+  const { searchTerm } = req.query;
+
+  const books = await db.selectAllBooksLike(searchTerm.trim());
+  const authors = await db.selectAllAuthorsLike(searchTerm.trim());
+  const genres = await db.selectAllGenresLike(searchTerm.trim());
+
+  res.render("search.ejs", {
+    title: "Stampede | Search",
+    selection: "search",
+    path: ["Search", searchTerm],
+    searchTerm,
+    books,
+    authors,
+    genres,
+    formatDate,
+  });
+};
+
+export { renderDashboardPage, renderSearchPage };
