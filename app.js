@@ -5,6 +5,9 @@ import express from "express";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import authorsRouter from "./routes/authors-router.js";
+import booksRouter from "./routes/books-router.js";
+import genresRouter from "./routes/genres-router.js";
 import indexRouter from "./routes/index-router.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,15 +29,20 @@ app.use(express.urlencoded({ extended: true }));
 
 /* routes */
 app.use("/", indexRouter);
+app.use("/books", booksRouter);
+app.use("/authors", authorsRouter);
+app.use("/genres", genresRouter);
 
 /* error handlers */
 app.all("*", (req, res) => {
-  res.send("No such page: Error 404");
+  res.status(404).render("error.ejs", { status: 404 });
 });
 
 app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.statusCode || 500).send(err.message);
+  console.error(err.message);
+  res
+    .status(err.statusCode || 500)
+    .render("error.ejs", { status: err.statusCode || 500 });
 });
 
 /* startup */

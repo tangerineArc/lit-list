@@ -2,10 +2,14 @@
 
 import { Router } from "express";
 
-import { renderDashboardPage } from "../controllers/index-controller.js";
+import {
+  renderDashboardPage,
+  renderSearchPage,
+} from "../controllers/index-controller.js";
 
 const indexRouter = Router();
 
 indexRouter.get("/", renderDashboardPage);
+indexRouter.get("/search", renderSearchPage);
 
 export default indexRouter;
