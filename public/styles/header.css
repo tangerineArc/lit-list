@@ -10,6 +10,7 @@ header {
   & > svg {
     stroke: #6c757d;
 
+    flex-shrink: 0;
     cursor: pointer;
   }
 

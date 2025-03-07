@@ -48,6 +48,8 @@ main {
       height: 1.2rem;
 
       stroke: #6c757d;
+
+      flex-shrink: 0;
     }
 
     & > p {

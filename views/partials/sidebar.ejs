@@ -55,7 +55,7 @@
         </a>
       </li>
       <li>
-        <a href="/authors" class="<%= locals.selection === "authors" ? "selected" : "" %>">
+        <a href="/authors" class="<%= locals.selection === "authors" || locals.selection === "author-details" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -67,7 +67,7 @@
         </a>
       </li>
       <li>
-        <a href="/genres" class="<%= locals.selection === "genres" ? "selected" : "" %>">
+        <a href="/genres" class="<%= locals.selection === "genres" || locals.selection === "genre-details" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
@@ -99,7 +99,7 @@
     </p>
     <ul id="add-new-list">
       <li>
-        <a href="/new/book" class="<%= locals.selection === "new-book" ? "selected" : "" %>">
+        <a href="/books/new" class="<%= locals.selection === "new-book" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
@@ -108,7 +108,7 @@
         </a>
       </li>
       <li>
-        <a href="/new/author" class="<%= locals.selection === "new-author" ? "selected" : "" %>">
+        <a href="/authors/new" class="<%= locals.selection === "new-author" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
@@ -118,7 +118,7 @@
         </a>
       </li>
       <li>
-        <a href="/new/genre" class="<%= locals.selection === "new-genre" ? "selected" : "" %>">
+        <a href="/genres/new" class="<%= locals.selection === "new-genre" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path
