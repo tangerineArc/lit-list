@@ -22,6 +22,36 @@ section {
 
     position: relative;
 
+    & > .actions {
+      position: absolute;
+      z-index: 1;
+      bottom: calc(100% + 0.5rem);
+      right: 0.5rem;
+
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      & > form > button {
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+      }
+
+      & > a,
+      & > form > button {
+        & > svg {
+          width: 1.2rem;
+          height: 1.2rem;
+          stroke: #adb5bd;
+        }
+
+        & > svg:hover {
+          stroke: #6c757d;
+        }
+      }
+    }
+
     & > .connector {
       position: absolute;
       top: 100%;
