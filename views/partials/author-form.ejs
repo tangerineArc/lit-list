@@ -1,7 +1,7 @@
 <div>
   <div>
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" required>
+    <input type="text" name="name" id="name" value="<%= locals.existing ? locals.existing.details.name : "" %>" required>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="10" />
@@ -11,7 +11,7 @@
   </div>
   <div>
     <label for="birthdate">Date of Birth</label>
-    <input type="date" name="birthdate" id="birthdate" required>
+    <input type="date" name="birthdate" id="birthdate" value="<%= locals.existing ? locals.existing.details.birthdate.toJSON().split("T")[0] : "" %>" required>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M8 2v4" />
@@ -22,4 +22,7 @@
   </div>
 </div>
 
-<button type="submit">Add Author</button>
+<button type="submit">
+  <%= locals.selection === "edit-author" ? "Update" : "Add" %>
+  Author
+</button>

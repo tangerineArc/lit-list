@@ -40,7 +40,7 @@
       <section>
         <form action="<%= locals.actionRoute %>" method="POST">
           <% if (locals.selection === "new-book") { %>
-            <%- include("partials/book-form.ejs", { authors: locals.authors, genres: locals.genres }) %>
+            <%- include("partials/book-form.ejs", { authors: locals.authors, genres: locals.genres, selection: locals.selection }) %>
           <% } %>
 
           <% if (locals.selection === "new-author" ) { %>
@@ -49,6 +49,18 @@
 
           <% if (locals.selection === "new-genre") { %>
             <%- include("partials/genre-form.ejs") %>
+          <% } %>
+
+          <% if (locals.selection === "edit-book") { %>
+            <%- include("partials/book-form.ejs", { authors: locals.authors, genres: locals.genres, existing: locals.existing, selection: locals.selection }) %>
+          <% } %>
+
+          <% if (locals.selection === "edit-author") { %>
+            <%- include("partials/author-form.ejs", { existing: locals.existing, selection: locals.selection }) %>
+          <% } %>
+
+          <% if (locals.selection === "edit-genre") { %>
+            <%- include("partials/genre-form.ejs", { existing: locals.existing, selection: locals.selection }) %>
           <% } %>
         </form>
       </section>

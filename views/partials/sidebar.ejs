@@ -44,7 +44,7 @@
     </p>
     <ul id="category-list">
       <li>
-        <a href="/books" class="<%= locals.selection === "books" || locals.selection === "book-details" ? "selected" : "" %>">
+        <a href="/books" class="<%= locals.selection === "books" || locals.selection === "book-details" || locals.selection === "edit-book" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M2 16V4a2 2 0 0 1 2-2h11" />
@@ -55,7 +55,7 @@
         </a>
       </li>
       <li>
-        <a href="/authors" class="<%= locals.selection === "authors" || locals.selection === "author-details" ? "selected" : "" %>">
+        <a href="/authors" class="<%= locals.selection === "authors" || locals.selection === "author-details" || locals.selection === "edit-author" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -67,7 +67,7 @@
         </a>
       </li>
       <li>
-        <a href="/genres" class="<%= locals.selection === "genres" || locals.selection === "genre-details" ? "selected" : "" %>">
+        <a href="/genres" class="<%= locals.selection === "genres" || locals.selection === "genre-details" || locals.selection === "edit-genre" ? "selected" : "" %>">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />

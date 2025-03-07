@@ -1,7 +1,7 @@
 <div>
   <div>
     <label for="type">Type</label>
-    <input type="text" name="type" id="type" required>
+    <input type="text" name="type" id="type" value="<%= locals.existing ? locals.existing.details.type : "" %>" required>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path
@@ -11,4 +11,7 @@
   </div>
 </div>
 
-<button type="submit">Add Genre</button>
+<button type="submit">
+  <%= locals.selection === "edit-genre" ? "Update" : "Add" %>
+  Genre
+</button>
