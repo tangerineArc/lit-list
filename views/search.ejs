@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/index.css">
+  <link rel="stylesheet" href="/styles/sidebar.css">
+  <link rel="stylesheet" href="/styles/header.css">
+  <link rel="stylesheet" href="/styles/search.css">
+
+  <script defer src="/scripts/sidebar.js"></script>
+
+  <title>
+    <%= locals.title %>
+  </title>
+</head>
+
+<body>
+  <%- include("partials/sidebar.ejs", { selection: locals.selection }) %>
+
+  <main>
+    <%- include("partials/header.ejs", { searchTerm: locals.searchTerm }) %>
+
+    <div class="path">
+      <% locals.path.forEach(item => { %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 17 5-5-5-5" />
+          <path d="m13 17 5-5-5-5" />
+        </svg>
+        <p>
+          <%= item %>
+        </p>
+      <% }); %>
+    </div>
+
+    <section>
+      <div class="category">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 16V4a2 2 0 0 1 2-2h11" />
+          <path d="M22 18H11a2 2 0 1 0 0 4h10.5a.5.5 0 0 0 .5-.5v-15a.5.5 0 0 0-.5-.5H11a2 2 0 0 0-2 2v12" />
+          <path d="M5 14H4a2 2 0 1 0 0 4h1" />
+        </svg>
+        Books
+      </div>
+      <section class="book">
+        <% if (locals.books.length) { %>
+          <% locals.books.forEach(book => { %>
+            <a href="/books/<%= book.id %>">
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="1" />
+                </svg>
+                <%= book.name %>
+              </p>
+              <div>
+                <p>
+                  <%= book.stock %> in stock
+                </p>
+                <p>₹<%= book.price.slice(1,) %>
+                </p>
+              </div>
+              <p>
+                Published on
+                <%= locals.formatDate(new Date(book.publicationdate).toString()) %>
+              </p>
+            </a>
+          <% }); %>
+        <% } else { %>
+          <div style="cursor: auto;">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m15 9-6 6" />
+                <path d="m9 9 6 6" />
+              </svg>
+              <span style="font-style: italic; font-size: 0.9rem;">
+                no books found
+              </span>
+            </p>
+          </div>
+        <% } %>
+      </section>
+      <div class="category">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        Authors
+      </div>
+      <section class="author">
+        <% if (locals.authors.length) { %>
+          <% locals.authors.forEach((author) => { %>
+            <a href="/authors/<%= author.id %>">
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="1" />
+                </svg>
+                <%= author.name %>
+              </p>
+              <p>
+                Born on
+                <%= locals.formatDate(new Date(author.birthdate).toString()) %>
+              </p>
+            </a>
+          <% }); %>
+        <% } else { %>
+          <div style="cursor: auto;">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m15 9-6 6" />
+                <path d="m9 9 6 6" />
+              </svg>
+              <span style="font-style: italic; font-size: 0.9rem;">
+                no authors found
+              </span>
+            </p>
+          </div>
+        <% } %>
+      </section>
+      <div class="category">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <circle cx="17.5" cy="17.5" r="3.5" />
+        </svg>
+        Genres
+      </div>
+      <section class="genre">
+        <% if (locals.genres.length) { %>
+          <% locals.genres.forEach((genre) => { %>
+            <a href="/genres/<%= genre.id %>">
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="1" />
+                </svg>
+                <%= genre.type %>
+              </p>
+            </a>
+          <% }); %>
+        <% } else { %>
+          <div style="cursor: auto;">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m15 9-6 6" />
+                <path d="m9 9 6 6" />
+              </svg>
+              <span style="font-style: italic; font-size: 0.9rem;">
+                no genres found
+              </span>
+            </p>
+          </div>
+        <% } %>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>
