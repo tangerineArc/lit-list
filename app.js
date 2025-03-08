@@ -42,7 +42,10 @@ app.use((err, req, res, next) => {
   console.error(err.message);
   res
     .status(err.statusCode || 500)
-    .render("error.ejs", { status: err.statusCode || 500 });
+    .render("error.ejs", {
+      status: err.statusCode || 500,
+      errors: err.message.split(" :: "),
+    });
 });
 
 /* startup */
