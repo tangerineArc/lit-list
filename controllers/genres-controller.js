@@ -49,7 +49,7 @@ const saveNewGenre = [
         errors
           .array()
           .map((err) => err.msg)
-          .join(", ")
+          .join(" :: ")
       );
     }
 
@@ -92,7 +92,7 @@ const updateGenre = [
         errors
           .array()
           .map((err) => err.msg)
-          .join(", ")
+          .join(" :: ")
       );
     }
 

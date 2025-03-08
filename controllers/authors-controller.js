@@ -53,7 +53,7 @@ const saveNewAuthor = [
         errors
           .array()
           .map((err) => err.msg)
-          .join(", ")
+          .join(" :: ")
       );
     }
 
@@ -97,7 +97,7 @@ const updateAuthor = [
         errors
           .array()
           .map((err) => err.msg)
-          .join(", ")
+          .join(" :: ")
       );
     }
 

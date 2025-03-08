@@ -61,7 +61,7 @@ const saveNewBook = [
         errors
           .array()
           .map((err) => err.msg)
-          .join(", ")
+          .join(" :: ")
       );
     }
 
@@ -128,7 +128,7 @@ const updateBook = [
         errors
           .array()
           .map((err) => err.msg)
-          .join(", ")
+          .join(" :: ")
       );
     }
 
