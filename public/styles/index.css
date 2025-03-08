@@ -36,6 +36,21 @@ main {
   scrollbar-width: thin;
   scrollbar-color: #adb5bd #fff;
 
+  position: relative;
+
+  & > .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    display: none;
+
+    width: 100%;
+    height: 100vh;
+    background-color: #00000044;
+  }
+
   & > .path {
     margin: 1.5rem;
 
@@ -55,5 +70,11 @@ main {
     & > p {
       color: #6c757d;
     }
+  }
+}
+
+@media (min-width: 800px) {
+  main > .overlay {
+    display: none !important;
   }
 }

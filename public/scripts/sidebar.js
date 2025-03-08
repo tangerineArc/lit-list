@@ -34,6 +34,8 @@
 
   const sidebar = document.querySelector("aside");
 
+  const overlay = document.querySelector(".overlay");
+
   sidebarOpenButton.style.display = "none";
 
   if (document.documentElement.clientWidth < 1200) {
@@ -44,6 +46,8 @@
   sidebarCloseButton.addEventListener("click", () => {
     sidebar.style.display = "none";
     sidebarOpenButton.style.display = "inline";
+
+    overlay.style.display = "none";
   });
 
   sidebarCloseButton.addEventListener("keyup", (event) => {
@@ -51,11 +55,17 @@
 
     sidebar.style.display = "none";
     sidebarOpenButton.style.display = "inline";
+
+    overlay.style.display = "none";
   });
 
   sidebarOpenButton.addEventListener("click", () => {
     sidebar.style.display = "flex";
     sidebarOpenButton.style.display = "none";
+
+    if (document.documentElement.clientWidth <= 800) {
+      overlay.style.display = "block";
+    }
   });
 
   sidebarOpenButton.addEventListener("keyup", (event) => {
@@ -63,5 +73,9 @@
 
     sidebar.style.display = "flex";
     sidebarOpenButton.style.display = "none";
+
+    if (document.documentElement.clientWidth <= 800) {
+      overlay.style.display = "block";
+    }
   });
 })();
