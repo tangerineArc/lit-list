@@ -1,10 +1,13 @@
 "use strict";
 
 import asyncHandler from "express-async-handler";
+import { validationResult } from "express-validator";
 
 import * as db from "../db/queries.js";
 
 import formatDate from "../utils/format-date.js";
+
+import validateSearch from "../validators/search-validator.js";
 
 const renderDashboardPage = asyncHandler(async (req, res) => {
   const stockSum = await db.selectStockSum();
@@ -29,23 +32,36 @@ const renderDashboardPage = asyncHandler(async (req, res) => {
   });
 });
 
-const renderSearchPage = async (req, res) => {
-  const { searchTerm } = req.query;
+const renderSearchPage = [
+  validateSearch,
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new Error(
+        errors
+          .array()
+          .map((err) => err.msg)
+          .join(", ")
+      );
+    }
 
-  const books = await db.selectAllBooksLike(searchTerm.trim());
-  const authors = await db.selectAllAuthorsLike(searchTerm.trim());
-  const genres = await db.selectAllGenresLike(searchTerm.trim());
+    const { searchTerm } = req.query;
 
-  res.render("search.ejs", {
-    title: "Stampede | Search",
-    selection: "search",
-    path: ["Search", searchTerm],
-    searchTerm,
-    books,
-    authors,
-    genres,
-    formatDate,
-  });
-};
+    const books = await db.selectAllBooksLike(searchTerm.trim());
+    const authors = await db.selectAllAuthorsLike(searchTerm.trim());
+    const genres = await db.selectAllGenresLike(searchTerm.trim());
+
+    res.render("search.ejs", {
+      title: "Stampede | Search",
+      selection: "search",
+      path: ["Search", searchTerm],
+      searchTerm,
+      books,
+      authors,
+      genres,
+      formatDate,
+    });
+  }),
+];
 
 export { renderDashboardPage, renderSearchPage };
